@@ -1,11 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BT - I Nuovi Trend del 2023</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+
+    <header>
+        <div class="logo-container">
+            <div class="qr-icon">
+                <div class="qr-pixel"></div>
+                <div class="qr-pixel"></div>
+                <div class="qr-pixel"></div>
+                <div class="qr-pixel"></div>
+            </div>
+            <span class="logo-text">BT</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" onclick="showPage('home', event)">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('iphone', event)">Articolo 1</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('macbook', event)">Articolo 2</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('watch', event)">Articolo 3</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content-area">
+
+        <section id="page-home" class="page active-page">
+            <h1 class="main-title glow-text">I NUOVI TREND DEL 2023</h1>
+            
+            <div class="card-container">
+                <div class="card card-green">
+                    <div class="card-image-placeholder img-iphone"></div>
+                    <h2>iPhone</h2>
+                    <p>iPhone è una linea di prodotti progettati da Apple Inc.</p>
+                </div>
+
+                <div class="card card-white">
+                    <div class="card-image-placeholder img-macbook"></div>
+                    <h2>MacBook Pro</h2>
+                    <p>Ti presentiamo i nuovi MacBook Pro con chip M2.</p>
+                </div>
+
+                <div class="card card-green">
+                    <div class="card-image-placeholder img-watch"></div>
+                    <h2>Apple Watch</h2>
+                    <p>Ti presentiamo i nuovi Apple Watch Serie 8.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-iphone" class="page detailing-page">
+            <h1 class="product-title glow-text">iPhone</h1>
+            <div class="product-detail-layout">
+                <div class="product-image-large img-iphone-detail">
+                    </div>
+                <div class="product-features">
+                    <ul>
+                        <li>Caratteristica 1</li>
+                        <li>Caratteristica 2</li>
+                        <li>Caratteristica 3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-macbook" class="page detailing-page">
+            <h1 class="product-title glow-text">MacBook Pro</h1>
+            <div class="product-detail-layout">
+                <div class="product-image-large img-macbook-detail">
+                    </div>
+                <div class="product-features">
+                    <ul>
+                        <li>Caratteristica 1</li>
+                        <li>Caratteristica 2</li>
+                        <li>Caratteristica 3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-watch" class="page detailing-page">
+            <h1 class="product-title glow-text">Apple Watch</h1>
+            <div class="product-detail-layout">
+                <div class="product-image-large img-watch-detail">
+                    </div>
+                <div class="product-features">
+                    <ul>
+                        <li>Caratteristica 1</li>
+                        <li>Caratteristica 2</li>
+                        <li>Caratteristica 3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function showPage(pageId) {
+            // Nascondi tutte le pagine
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            // Rimuovi la classe 'active' da tutti i link
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Mostra la pagina selezionata
+            document.getElementById('page-' + pageId).classList.add('active-page');
+
+            // Evidenzia il link cliccato (trovandolo tramite l'onclick)
+            event.target.classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
