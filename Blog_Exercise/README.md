@@ -1,4 +1,4 @@
-# Documentazione Progetto Web: "I Nuovi Trend del 2023"
+# Documentazione Progetto Web
 
 ## 1. Introduzione
 Il progetto consiste in una piattaforma web moderna in **Dark Mode** dedicata alla presentazione dei prodotti tecnologici Apple di punta per l'anno 2023. L'obiettivo è offrire un'interfaccia pulita, futuristica e di facile navigazione.
