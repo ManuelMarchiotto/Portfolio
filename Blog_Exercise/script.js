@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     // 1. EFFETTO DISSOLVENZA ALL'ENTRATA
     const mainContent = document.querySelector('main');
     if (mainContent) {
