@@ -2,105 +2,48 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BT - I Nuovi Trend del 2023</title>
+    <title>BT - Home</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-
     <header>
-        <div class="logo-container">
-            <div class="qr-icon">
-                <div class="qr-pixel"></div>
-                <div class="qr-pixel"></div>
-                <div class="qr-pixel"></div>
-                <div class="qr-pixel"></div>
-            </div>
-            <span class="logo-text">BT</span>
-        </div>
+        <a href="index.html" class="logo-container">
+            <img src="media/logo.png" alt="Logo BT" class="logo-image">
+        </a>
         <nav>
             <ul>
-                <li><a href="#" class="nav-link active" onclick="showPage('home', event)">Home</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('iphone', event)">Articolo 1</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('macbook', event)">Articolo 2</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('watch', event)">Articolo 3</a></li>
+                <!-- main page -->
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <!-- iphone page -->
+                <li><a href="articolo1.html" class="nav-link">Articolo 1</a></li> 
+                <!-- macbook page -->
+                <li><a href="articolo2.html" class="nav-link">Articolo 2</a></li>
+                <!-- watch page -->
+                <li><a href="articolo3.html" class="nav-link active">Articolo 3</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="content-area">
-
-        <section id="page-home" class="page active-page">
-            <h1 class="main-title glow-text">I NUOVI TREND DEL 2023</h1>
-            
-            <div class="card-container">
-                <div class="card card-green">
-                    <div class="card-image-placeholder img-iphone"></div>
-                    <h2>iPhone</h2>
-                    <p>iPhone è una linea di prodotti progettati da Apple Inc.</p>
-                </div>
-
-                <div class="card card-white">
-                    <div class="card-image-placeholder img-macbook"></div>
-                    <h2>MacBook Pro</h2>
-                    <p>Ti presentiamo i nuovi MacBook Pro con chip M2.</p>
-                </div>
-
-                <div class="card card-green">
-                    <div class="card-image-placeholder img-watch"></div>
-                    <h2>Apple Watch</h2>
-                    <p>Ti presentiamo i nuovi Apple Watch Serie 8.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="page-iphone" class="page detailing-page">
-            <h1 class="product-title glow-text">iPhone</h1>
-            <div class="product-detail-layout">
-                <div class="product-image-large img-iphone-detail">
-                    </div>
-                <div class="product-features">
-                    <ul>
-                        <li>Caratteristica 1</li>
-                        <li>Caratteristica 2</li>
-                        <li>Caratteristica 3</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="page-macbook" class="page detailing-page">
-            <h1 class="product-title glow-text">MacBook Pro</h1>
-            <div class="product-detail-layout">
-                <div class="product-image-large img-macbook-detail">
-                    </div>
-                <div class="product-features">
-                    <ul>
-                        <li>Caratteristica 1</li>
-                        <li>Caratteristica 2</li>
-                        <li>Caratteristica 3</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="page-watch" class="page detailing-page">
-            <h1 class="product-title glow-text">Apple Watch</h1>
-            <div class="product-detail-layout">
-                <div class="product-image-large img-watch-detail">
-                    </div>
-                <div class="product-features">
-                    <ul>
-                        <li>Caratteristica 1</li>
-                        <li>Caratteristica 2</li>
-                        <li>Caratteristica 3</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+    <main>
+        <h1 class="main-title glow-text">I NUOVI TREND DEL 2023</h1>
+        <div class="card-container">
+            <a href="articolo1.html" class="card card-green">
+                <div class="card-image-placeholder img-iphone"></div>
+                <h2>iPhone</h2>
+                <p>Scopri l'innovazione di Apple Inc.</p>
+            </a>
+            <a href="articolo2.html" class="card card-white">
+                <div class="card-image-placeholder img-macbook"></div>
+                <h2>MacBook Pro</h2>
+                <p>Potenza pura con il chip M2.</p>
+            </a>
+            <a href="articolo3.html" class="card card-green">
+                <div class="card-image-placeholder img-watch"></div>
+                <h2>Apple Watch</h2>
+                <p>La nuova Serie 8 è qui.</p>
+            </a>
+        </div>
     </main>
-
 </body>
 </html>
