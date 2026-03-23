@@ -1,0 +1,255 @@
+/* --- RESET E STILI DI BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font simile all'originale */
+}
+
+body {
+    background-color: #000000; /* Sfondo nero assoluto */
+    color: #ffffff; /* Testo bianco di base */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- VARIABILI COLORE --- */
+:root {
+    --neon-green: #00ff88; /* Il verde brillante dell'immagine */
+    --neon-glow: 0 0 15px rgba(0, 255, 136, 0.7), 0 0 30px rgba(0, 255, 136, 0.5);
+    --card-bg-white: #ffffff;
+    --card-text-dark: #333333;
+}
+
+/* --- HEADER / NAVBAR --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.8); /* Leggermente trasparente */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Icona QR stilizzata in CSS */
+.qr-icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    grid-template-columns: 1px 1px;
+    gap: 2px;
+}
+.qr-pixel {
+    background-color: var(--neon-green);
+    box-shadow: var(--neon-glow);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: var(--neon-glow);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #888888; /* Grigio per link non attivi */
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--neon-green);
+    text-shadow: var(--neon-glow);
+}
+
+/* --- GESTIONE PAGINE (SPA) --- */
+main {
+    margin-top: 80px; /* Spazio per la navbar fissa */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.page {
+    display: none; /* Nascoste di default */
+    width: 100%;
+    max-width: 1200px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.page.active-page {
+    display: block; /* Mostra solo la pagina attiva */
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* --- STILI TITOLI (Effetto Glow) --- */
+.glow-text {
+    text-transform: uppercase;
+    color: var(--neon-green);
+    text-shadow: var(--neon-glow);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.main-title { font-size: 32px; letter-spacing: 2px; }
+.product-title { font-size: 28px; }
+
+/* --- PAGE 1: HOME - CARD LAYOUT --- */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    height: 350px;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Card Verdi */
+.card-green {
+    background-color: var(--neon-green);
+    color: var(--card-text-dark);
+}
+
+/* Card Bianca */
+.card-white {
+    background-color: var(--card-bg-white);
+    color: var(--card-text-dark);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin: 15px 0 10px;
+}
+
+.card p {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Segnaposto Immagini nelle Card */
+.card-image-placeholder {
+    width: 100%;
+    height: 180px;
+    background-color: #f0f0f0; /* Grigio chiaro per simulare l'immagine */
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Collego le immagini nelle loro card */
+.img-iphone { 
+    background-image: url(/Portfolio/Blog_Exercise/media/iphone.png); 
+}
+
+.img-macbook { 
+    background-image: url(/Portfolio/Blog_Exercise/media/mack.png); 
+}
+
+.img-watch { 
+    background-image: url(/Portfolio/Blog_Exercise/media/appleWatch.png); 
+}
+
+
+/* --- PAGES 2, 3, 4: DETTAGLIO PRODOTTO LAYOUT --- */
+.detailing-page {
+    padding-top: 50px;
+}
+
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Due colonne uguali */
+    gap: 50px;
+    align-items: center;
+}
+
+.product-image-large {
+    width: 100%;
+    height: 400px;
+    background-color: #333333; /* Grigio scuro segnaposto */
+    border-radius: 15px;
+    border: 2px solid #444;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Collego le immagini nelle loro card */
+.img-iphone-detail {
+     background-image: url(/Portfolio/Blog_Exercise/media/iphone.png);
+}
+
+.img-macbook-detail {
+     background-image: url(/Portfolio/Blog_Exercise/media/mack.png);
+}
+
+.img-watch-detail { 
+    background-image: url(/Portfolio/Blog_Exercise/media/appleWatch.png);
+}
+
+
+.product-features ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-features li {
+    font-size: 18px;
+    color: #cccccc;
+    display: flex;
+    align-items: center;
+}
+
+/* Pallino lista stile originale */
+.product-features li::before {
+    content: "•";
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+/* --- RESPONSIVE DESIGN (Base) --- */
+@media (max-width: 768px) {
+    header { padding: 15px 20px; flex-direction: column; gap: 10px; }
+    nav ul { gap: 15px; }
+    .product-detail-layout { grid-template-columns: 1fr; text-align: center; }
+    .product-features li { justify-content: center; }
+}
