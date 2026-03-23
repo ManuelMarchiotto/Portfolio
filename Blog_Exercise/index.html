@@ -102,23 +102,5 @@
 
     </main>
 
-    <script>
-        function showPage(pageId) {
-            // Nascondi tutte le pagine
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active-page'));
-
-            // Rimuovi la classe 'active' da tutti i link
-            const links = document.querySelectorAll('.nav-link');
-            links.forEach(link => link.classList.remove('active'));
-
-            // Mostra la pagina selezionata
-            document.getElementById('page-' + pageId).classList.add('active-page');
-
-            // Evidenzia il link cliccato (trovandolo tramite l'onclick)
-            event.target.classList.add('active');
-        }
-    </script>
-
 </body>
 </html>
