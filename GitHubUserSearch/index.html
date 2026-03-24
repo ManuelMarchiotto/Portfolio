@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEVFINDER — GitHub Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="app">
+      <header>
+        <div class="logo">DEV<span>FINDER</span></div>
+        <div class="logo-sub">GitHub User Explorer · No API key needed</div>
+      </header>
+
+      <div class="search-wrap">
+        <div class="search-box">
+          <span class="search-prefix">@</span>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="username"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="searchBtn">SEARCH</button>
+        </div>
+      </div>
+
+      <div class="suggestions" id="suggestions">
+        <button class="sug-btn" data-user="torvalds">
+          <img
+            src="https://avatars.githubusercontent.com/torvalds"
+            alt=""
+          />torvalds
+        </button>
+        <button class="sug-btn" data-user="gaearon">
+          <img
+            src="https://avatars.githubusercontent.com/gaearon"
+            alt=""
+          />gaearon
+        </button>
+        <button class="sug-btn" data-user="sindresorhus">
+          <img
+            src="https://avatars.githubusercontent.com/sindresorhus"
+            alt=""
+          />sindresorhus
+        </button>
+        <button class="sug-btn" data-user="antfu">
+          <img src="https://avatars.githubusercontent.com/antfu" alt="" />antfu
+        </button>
+        <button class="sug-btn" data-user="yyx990803">
+          <img
+            src="https://avatars.githubusercontent.com/yyx990803"
+            alt=""
+          />yyx990803
+        </button>
+      </div>
+
+      <div class="error-msg" id="errorMsg"></div>
+
+      <div class="loader" id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <!-- PROFILE CARD -->
+      <div class="profile-card" id="profileCard">
+        <div class="profile-top">
+          <div class="avatar-wrap">
+            <img class="avatar" id="avatar" src="" alt="avatar" />
+            <div class="avatar-status"></div>
+          </div>
+          <div class="profile-info">
+            <div class="profile-name" id="profileName">—</div>
+            <a class="profile-login" id="profileLogin" href="#" target="_blank"
+              >@—</a
+            >
+            <div class="profile-bio" id="profileBio"></div>
+            <div class="badge-row" id="badgeRow"></div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num" id="statRepos">—</div>
+            <div class="stat-lbl">Repos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="statFollowers">—</div>
+            <div class="stat-lbl">Followers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="statFollowing">—</div>
+            <div class="stat-lbl">Following</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="statGists">—</div>
+            <div class="stat-lbl">Gists</div>
+          </div>
+        </div>
+
+        <div class="repos-section">
+          <div class="repos-header">
+            <span class="repos-title">TOP REPOSITORIES</span>
+            <div class="repos-filter">
+              <button class="filter-btn active" data-sort="stars">
+                ★ Stars
+              </button>
+              <button class="filter-btn" data-sort="updated">↻ Recent</button>
+            </div>
+          </div>
+          <div class="repos-grid" id="reposGrid"></div>
+          <div class="repos-more" id="reposMore"></div>
+        </div>
+
+        <div class="card-footer">
+          <span><span class="footer-dot"></span>api.github.com</span>
+          <span id="joinedAt">—</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
