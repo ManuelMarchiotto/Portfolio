@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>METEO — Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+<!-- Stars bg -->
+<div class="stars" id="stars"></div>
+
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <h1>METEO</h1>
+    <p>Real-time weather explorer</p>
+  </header>
+
+  <!-- API Key notice -->
+  <div class="api-notice">
+    <strong>⚙ API Key richiesta</strong>
+    Ottieni una chiave gratuita su <strong>openweathermap.org/api</strong> e incollala qui:
+    <input type="text" id="apiKeyInput" placeholder="es. a1b2c3d4e5f6..." />
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Cerca una città… es. Roma, Tokyo" autocomplete="off" />
+      <button id="searchBtn" aria-label="Cerca">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#0a0e1a" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick cities -->
+  <div class="quick-cities">
+    <button class="quick-btn" data-city="Roma">Roma</button>
+    <button class="quick-btn" data-city="Milano">Milano</button>
+    <button class="quick-btn" data-city="London">London</button>
+    <button class="quick-btn" data-city="Tokyo">Tokyo</button>
+    <button class="quick-btn" data-city="New York">New York</button>
+    <button class="quick-btn" data-city="Sydney">Sydney</button>
+  </div>
+
+  <!-- Error -->
+  <div class="error-msg" id="errorMsg"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader"></div>
+
+  <!-- Weather card -->
+  <div class="weather-card" id="weatherCard">
+    <div class="card-banner" id="cardBanner">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px">
+        <div>
+          <div class="city-name" id="cityName">—</div>
+          <div class="city-meta" id="cityMeta">—</div>
+        </div>
+        <div class="weather-icon-big" id="weatherIcon">☁️</div>
+      </div>
+      <div class="temp-row">
+        <div class="temp-big" id="tempBig">—</div>
+        <div class="temp-unit">°C</div>
+      </div>
+      <div class="description" id="description">—</div>
+      <div class="feels-like" id="feelsLike">Percepita: —</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-icon">💧</div>
+        <div>
+          <div class="stat-label">Umidità</div>
+          <div class="stat-value" id="humidity">—</div>
+        </div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-icon">💨</div>
+        <div>
+          <div class="stat-label">Vento</div>
+          <div class="stat-value" id="wind">—</div>
+        </div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-icon">👁</div>
+        <div>
+          <div class="stat-label">Visibilità</div>
+          <div class="stat-value" id="visibility">—</div>
+        </div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-icon">🌡</div>
+        <div>
+          <div class="stat-label">Pressione</div>
+          <div class="stat-value" id="pressure">—</div>
+        </div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-icon">🌅</div>
+        <div>
+          <div class="stat-label">Alba</div>
+          <div class="stat-value" id="sunrise">—</div>
+        </div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-icon">🌇</div>
+        <div>
+          <div class="stat-label">Tramonto</div>
+          <div class="stat-value" id="sunset">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <span>OpenWeatherMap API</span>
+      <span id="lastUpdated">—</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
