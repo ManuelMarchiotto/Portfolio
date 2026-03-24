@@ -239,3 +239,63 @@ main {
         height: 300px;
     }
 }
+
+@media (max-width: 667px){
+    /* Riduciamo il padding generale per dare respiro ai contenuti */
+    header {
+        padding: 15px 5%;
+    }
+
+    main {
+        padding: 30px 5%;
+    }
+
+    /* Testi più piccoli per non rompere il layout */
+    .main-title {
+        font-size: 26px;
+    }
+
+    .product-title {
+        font-size: 28px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    /* Menu di navigazione: lo rendiamo più compatto */
+    nav ul {
+        gap: 15px; /* Riduciamo lo spazio tra i link */
+    }
+
+    .nav-link {
+        font-size: 11px; /* Font più piccolo per stare su una riga */
+    }
+
+    /* Griglia: forziamo una colonna singola */
+    .card-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Immagini prodotto: riduciamo l'altezza per evitare scroll infiniti */
+    .product-image-large {
+        height: 250px;
+    }
+
+    /* Lista caratteristiche: riduciamo i margini e il font */
+    .product-features li {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .product-features li::before {
+        font-size: 25px;
+        margin-right: 10px;
+    }
+
+    /* Le card occupano tutta la larghezza disponibile */
+    .card {
+        padding: 20px;
+    }
+}
