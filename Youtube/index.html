@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-section">
+            <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" class="logo">
+        </div>
+        <div class="search-section">
+            <input type="text" placeholder="Cerca">
+            <button>🔍</button>
+        </div>
+        <div class="user-section">
+            <span>📹</span> <span>🔔</span> <div class="theme-toggle" onclick="toggleTheme()"></div> <div class="avatar"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="item active">🏠 Home</div>
+                <div class="item">🎞️ Shorts</div>
+                <div class="item">📺 Iscrizioni</div>
+            </div>
+            <hr>
+            <div class="sidebar-section">
+                <div class="section-header" onclick="toggleSection(this)">📚 Tu <span class="arrow">▼</span></div>
+                <div class="section-content">
+                    <div class="item">🕒 Cronologia</div>
+                    <div class="item">▶️ I tuoi video</div>
+                    <div class="item">📂 Playlist</div>
+                    <div class="item">⏰ Guarda più tardi</div>
+                    <div class="item">👍 Video piaciuti</div>
+                </div>
+            </div>
+            <hr>
+            <div class="sidebar-section">
+                <div class="section-header" onclick="toggleSection(this)">🔥 Esplora <span class="arrow">▼</span></div>
+                <div class="section-content">
+                    <div class="item">🔥 Tendenze</div>
+                    <div class="item">🎵 Musica</div>
+                    <div class="item">🎬 Film</div>
+                    <div class="item">🎮 Videogiochi</div>
+                    <div class="item">📰 Notizie</div>
+                    <div class="item">🏆 Sport</div>
+                    <div class="item">📚 Apprendimento</div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="video-grid">
+            <div class="video-card" onclick="window.location.href='video.html?id=1'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=1'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=10'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Titolo del Video Molto Interessante</h3>
+                        <p>Nome Canale • 100k visualizzazioni</p>
+                        <p>2 ore fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=2'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=2'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=11'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Come Cucinare una Pizza Perfetta</h3>
+                        <p>Cucina Italiana • 500k visualizzazioni</p>
+                        <p>1 giorno fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=3'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=3'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=12'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Tutorial React per Principianti</h3>
+                        <p>Dev Academy • 250k visualizzazioni</p>
+                        <p>3 giorni fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=4'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=4'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=13'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Viaggio in Giappone: Tokyo</h3>
+                        <p>Travel World • 1M visualizzazioni</p>
+                        <p>1 settimana fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=5'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=5'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=14'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Musica Relax: Pianoforte Classico</h3>
+                        <p>Music Lounge • 2M visualizzazioni</p>
+                        <p>2 settimane fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=6'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=6'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=15'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Recensione Smartphone 2024</h3>
+                        <p>Tech Reviews • 750k visualizzazioni</p>
+                        <p>5 giorni fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=7'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=7'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=16'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Allenamento Fitness a Casa</h3>
+                        <p>Fitness Pro • 300k visualizzazioni</p>
+                        <p>4 giorni fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=8'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=8'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=17'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Storia Antica: Roma Imperiale</h3>
+                        <p>History Channel • 1.5M visualizzazioni</p>
+                        <p>3 settimane fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=9'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=9'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=18'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Coding Challenge: Algoritmi</h3>
+                        <p>Code Masters • 150k visualizzazioni</p>
+                        <p>1 settimana fa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card" onclick="window.location.href='video.html?id=10'">
+                <div class="thumbnail" style="background-image: url('https://picsum.photos/320/180?random=10'); background-size: cover;"></div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/36/36?random=19'); background-size: cover;"></div>
+                    <div class="text">
+                        <h3>Natura Selvaggia: Animali</h3>
+                        <p>Wildlife Docs • 800k visualizzazioni</p>
+                        <p>6 giorni fa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Informazioni</h4>
+                <p>Stampa</p>
+                <p>Stato</p>
+                <p>Nuovi video</p>
+            </div>
+            <div class="footer-section">
+                <h4>Community</h4>
+                <p>Annunci</p>
+                <p>Forum</p>
+                <p>Influencer</p>
+            </div>
+            <div class="footer-section">
+                <h4>Business</h4>
+                <p>Pubblicità</p>
+                <p>Contatti</p>
+                <p>Carriere</p>
+            </div>
+            <div class="footer-section">
+                <h4>Supporto</h4>
+                <p>Aiuto</p>
+                <p>Sicurezza</p>
+                <p>Feedback</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 YouTube Clone. Tutti i diritti riservati.</p>
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>

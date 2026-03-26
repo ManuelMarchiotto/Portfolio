@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone - Video Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-section">
+            <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+            <a href="index.html">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" class="logo">
+            </a>
+        </div>
+        <div class="search-section">
+            <input type="text" placeholder="Cerca">
+            <button>🔍</button>
+        </div>
+        <div class="user-section">
+            <span>📹</span> <span>🔔</span> <div class="theme-toggle" onclick="toggleTheme()"></div> <div class="avatar"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="item" onclick="window.location.href='index.html'">🏠 Home</div>
+                <div class="item">🎞️ Shorts</div>
+                <div class="item">📺 Iscrizioni</div>
+            </div>
+            <hr>
+            <div class="sidebar-section">
+                <div class="section-header" onclick="toggleSection(this)">📚 Tu <span class="arrow">▼</span></div>
+                <div class="section-content">
+                    <div class="item">🕒 Cronologia</div>
+                    <div class="item">▶️ I tuoi video</div>
+                    <div class="item">📂 Playlist</div>
+                    <div class="item">⏰ Guarda più tardi</div>
+                    <div class="item">👍 Video piaciuti</div>
+                </div>
+            </div>
+            <hr>
+            <div class="sidebar-section">
+                <div class="section-header" onclick="toggleSection(this)">🔥 Esplora <span class="arrow">▼</span></div>
+                <div class="section-content">
+                    <div class="item">🔥 Tendenze</div>
+                    <div class="item">🎵 Musica</div>
+                    <div class="item">🎬 Film</div>
+                    <div class="item">🎮 Videogiochi</div>
+                    <div class="item">📰 Notizie</div>
+                    <div class="item">🏆 Sport</div>
+                    <div class="item">📚 Apprendimento</div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="video-player-section">
+            <div class="video-player">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-details">
+                <h1 id="video-title">Titolo del Video</h1>
+                <div class="video-stats">
+                    <span>100k visualizzazioni • 2 ore fa</span>
+                    <div class="actions">
+                        <button>👍 10k</button>
+                        <button>👎</button>
+                        <button>📤 Condividi</button>
+                        <button>💾 Salva</button>
+                        <button>⋯</button>
+                    </div>
+                </div>
+                <div class="channel-info">
+                    <div class="channel-icon" style="background-image: url('https://picsum.photos/48/48?random=20'); background-size: cover;"></div>
+                    <div class="channel-details">
+                        <h3>Nome Canale</h3>
+                        <p>1M iscritti</p>
+                    </div>
+                    <button class="subscribe-btn">Iscriviti</button>
+                </div>
+                <div class="description">
+                    <p>Descrizione del video molto interessante con molte informazioni utili.</p>
+                    <button class="show-more">Mostra altro</button>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <h3>Commenti (1.2k)</h3>
+                <div class="comment-input">
+                    <div class="avatar small"></div>
+                    <input type="text" placeholder="Aggiungi un commento pubblico...">
+                </div>
+                <div class="comments-list">
+                    <div class="comment">
+                        <div class="comment-avatar" style="background-image: url('https://picsum.photos/40/40?random=21'); background-size: cover;"></div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">Utente 1</span>
+                                <span class="comment-time">2 ore fa</span>
+                            </div>
+                            <p class="comment-text">Ottimo video! Molto utile e ben spiegato.</p>
+                            <div class="comment-actions">
+                                <button>👍 123</button>
+                                <button>👎 5</button>
+                                <button>Rispondi</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-avatar" style="background-image: url('https://picsum.photos/40/40?random=22'); background-size: cover;"></div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">Utente 2</span>
+                                <span class="comment-time">1 giorno fa</span>
+                            </div>
+                            <p class="comment-text">Grazie per il contenuto di qualità!</p>
+                            <div class="comment-actions">
+                                <button>👍 45</button>
+                                <button>👎 1</button>
+                                <button>Rispondi</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-avatar" style="background-image: url('https://picsum.photos/40/40?random=23'); background-size: cover;"></div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">Utente 3</span>
+                                <span class="comment-time">3 giorni fa</span>
+                            </div>
+                            <p class="comment-text">Mi piacerebbe vedere più video come questo.</p>
+                            <div class="comment-actions">
+                                <button>👍 78</button>
+                                <button>👎 2</button>
+                                <button>Rispondi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Informazioni</h4>
+                <p>Stampa</p>
+                <p>Stato</p>
+                <p>Nuovi video</p>
+            </div>
+            <div class="footer-section">
+                <h4>Community</h4>
+                <p>Annunci</p>
+                <p>Forum</p>
+                <p>Influencer</p>
+            </div>
+            <div class="footer-section">
+                <h4>Business</h4>
+                <p>Pubblicità</p>
+                <p>Contatti</p>
+                <p>Carriere</p>
+            </div>
+            <div class="footer-section">
+                <h4>Supporto</h4>
+                <p>Aiuto</p>
+                <p>Sicurezza</p>
+                <p>Feedback</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 YouTube Clone. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Get video ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('id');
+
+        // Set video title based on ID
+        const titles = {
+            '1': 'Titolo del Video Molto Interessante',
+            '2': 'Come Cucinare una Pizza Perfetta',
+            '3': 'Tutorial React per Principianti',
+            '4': 'Viaggio in Giappone: Tokyo',
+            '5': 'Musica Relax: Pianoforte Classico',
+            '6': 'Recensione Smartphone 2024',
+            '7': 'Allenamento Fitness a Casa',
+            '8': 'Storia Antica: Roma Imperiale',
+            '9': 'Coding Challenge: Algoritmi',
+            '10': 'Natura Selvaggia: Animali'
+        };
+
+        document.getElementById('video-title').textContent = titles[videoId] || 'Video';
+    </script>
+</body>
+</html>
