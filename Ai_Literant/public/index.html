@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <title>Synthetic Architect</title>
+</head>
+<body>
+<div class="os-container">
+        
+        <aside class="sidebar">
+            <div class="pulse-container">
+                <div class="dot"></div>
+                <span class="mono-text">[STATUS: ACTIVE]</span>
+            </div>
+
+            <nav class="system-nav">
+                <div class="nav-item active">TERMINAL_MODE</div>
+                <div class="nav-item">PROJECT_INDEX</div>
+            </nav>
+
+            <div class="debug-console">
+                <h4 class="process-header" style="margin-bottom: 1rem;">// DEBUG_MONITOR</h4>
+                
+                <div class="debug-item">
+                    <span class="debug-label">LATENCY</span>
+                    <span id="debug-latency" class="debug-value">0ms</span>
+                </div>
+                
+                <div class="debug-item">
+                    <span class="debug-label">TOKENS</span>
+                    <span id="debug-tokens" class="debug-value">0</span>
+                </div>
+                
+                <div class="debug-item">
+                    <span class="debug-label">MODEL</span>
+                    <span id="debug-model" class="debug-value">GEMINI_1.5</span>
+                </div>
+                
+                <div class="debug-item">
+                    <span class="debug-label">NODE_ENV</span>
+                    <span class="debug-value" style="color: var(--primary)">PROD_SIM</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="viewport">
+            <div id="chat-output" class="chat-flow">
+                <div class="message-wrap assistant">
+                    <div class="process-header">[SYSTEM // INITIALIZATION_COMPLETE]</div>
+                    <p class="text-white">Architetto Sintetico pronto. Inserisci un comando per iniziare.</p>
+                </div>
+            </div>
+            
+            <section id="project-zone" class="asymmetric-grid" style="display:none;">
+                </section>
+        </main>
+    </div>
+
+    <div class="command-wrapper">
+        <div class="command-bar">
+            <span class="prompt">></span>
+            <input type="text" id="user-input" placeholder="Esegui comando..." autofocus autocomplete="off">
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
