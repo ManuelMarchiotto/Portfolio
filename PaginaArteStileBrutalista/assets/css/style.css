@@ -1,0 +1,266 @@
+/* --- 1. DESIGN SYSTEM TOKENS --- */
+:root {
+    --surface: #f8f9fa;
+    --surface-container-low: #f3f4f5;
+    --surface-container-highest: #e1e3e4;
+    --surface-container-lowest: #ffffff;
+    
+    --primary: #000000;
+    --primary-container: #3c3b3b;
+    --on-primary: #e5e2e1;
+    --secondary: #5f5e5e;
+    --outline: #777777;
+    
+    --space-8: 2.75rem;
+    --space-20: 7rem;
+    --space-24: 8.5rem;
+
+    --ambient-shadow: 0 20px 40px rgba(25, 28, 29, 0.04);
+}
+
+/* --- 2. BASE & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--surface);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    /* Rimosso opacity: 0 per evitare il blocco bianco */
+}
+
+/* --- 3. TYPOGRAPHY --- */
+.display-lg {
+    font-family: 'Manrope', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.headline-lg {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-8);
+}
+
+.body-md {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.label-md {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary);
+    display: block;
+}
+
+.label-sm {
+    font-size: 0.75rem;
+    color: var(--secondary);
+}
+
+/* --- 4. NAVIGATION (Glassmorphic) --- */
+.global-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(248, 249, 250, 0.7);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.nav-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    position: relative;
+    padding-top: 10px;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+}
+
+/* --- 5. LAYOUT & SECTIONS --- */
+main {
+    padding: 140px 5% 80px;
+}
+
+.tonal-shift-low {
+    background-color: var(--surface-container-low);
+    margin: 0 -5.3%;
+    padding: var(--space-20) 5.3%;
+}
+
+.tonal-shift-high {
+    background-color: #191c1d; /* Deep variant for project detail */
+    color: #ffffff;
+}
+
+/* --- 6. COMPONENTS --- */
+
+/* Artwork Card */
+.artwork-card {
+    background-color: var(--surface-container-lowest);
+    box-shadow: var(--ambient-shadow);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    border: none;
+}
+
+.artwork-card:hover {
+    transform: scale(1.02);
+}
+
+.image-placeholder {
+    width: 100%;
+    background-color: var(--surface-container-highest);
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.8s ease;
+}
+
+.artwork-card:hover img {
+    filter: grayscale(0%);
+}
+
+.card-meta {
+    padding: 2rem;
+}
+
+/* Primary Button */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--primary-container));
+    color: var(--on-primary);
+    padding: 1.2rem var(--space-8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* --- 7. PROJECT DETAIL (Dark Layout) --- */
+.page-project-detail {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.recessed-frame {
+    background: rgba(255, 255, 255, 0.05);
+    padding: var(--space-8);
+    width: 50%;
+    z-index: 10;
+}
+
+.tech-tag {
+    background: #e1e3e4;
+    color: #000;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+/* --- 8. ANIMATION CLASSES --- */
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+}
+
+/* Smooth Scroll Support */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 1. Rende l'elemento <img> invisibile finché non è caricato.
+      Questo nasconde l'icona rotta del browser. */
+img:not([src]), 
+img[src=""] {
+    opacity: 0;
+}
+
+/* 2. Assicura che i contenitori delle immagini (placeholder)
+      abbiano sempre una dimensione e il colore di sfondo grigio
+      del design system, agendo come un 'frame' vuoto pulito. */
+.image-placeholder,
+.hero-image,
+.img-frame-lg,
+.img-frame-xl,
+.img-frame-md {
+    background-color: var(--surface-container-highest); /* Il grigio chiaro */
+    display: block;
+    position: relative;
+    overflow: hidden; /* Mantiene i bordi netti (0px radius) */
+}
+
+/* 3. Una volta caricata l'immagine, la facciamo apparire dolcemente.
+      (Richiede un piccolo aiuto dal JS o semplicemente il comportamento nativo) */
+img {
+    transition: opacity 0.5s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Assicura che i contenitori abbiano un fondo grigio se l'immagine manca */
+.image-placeholder, .hero-image, .img-frame-xl, .img-frame-lg, .img-frame-md {
+    background-color: #e1e3e4;
+    overflow: hidden;
+}
