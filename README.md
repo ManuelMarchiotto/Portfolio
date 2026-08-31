@@ -12,7 +12,7 @@ Questo spazio nasce come un contenitore per raccogliere i miei lavori, testare n
 In questa repo pubblicherò costantemente:
 * **Progetti di prova:** Esercitazioni su layout, design e logica.
 * **Esperimenti UI/UX:** Test di interfacce moderne (come il progetto "I Nuovi Trend del 2023").
-* **Codice in evoluzione:** Soluzioni che riflettono ciò che sto imparando giorno dopo giorno.
+* **Lavori in ambito Networking, Cybersecurity e Pentesting:** Soluzioni che riflettono ciò che sto imparando giorno dopo giorno.
 
 ---
 
