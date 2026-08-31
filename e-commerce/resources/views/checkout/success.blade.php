@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ordine ricevuto — UrbanWear</title>@vite(['resources/css/app.css', 'resources/js/app.js'])</head>
+<body class="grid min-h-screen place-items-center bg-[#0a0a0a] px-5 font-sans text-zinc-100 antialiased"><main class="w-full max-w-xl border border-white/15 bg-[#101010] p-8 text-center sm:p-12"><p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#b6ff33]">UrbanWear / Grazie</p><h1 class="mt-4 text-4xl font-black tracking-[-0.06em] text-white sm:text-6xl">ORDINE RICEVUTO.</h1><p class="mt-5 text-sm leading-6 text-zinc-400">Abbiamo preso in carico il tuo ordine #{{ $order->id }}. Riceverai conferma all’indirizzo {{ $order->customer_email }}.</p><p class="mt-6 text-2xl font-black text-[#b6ff33]">{{ number_format($order->total, 0, ',', '.') }} €</p><a class="mt-8 inline-block bg-[#b6ff33] px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:bg-white" href="{{ route('home') }}">Torna allo shop</a></main></body>
+</html>
