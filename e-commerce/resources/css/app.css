@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@theme { --font-sans: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; }
+@layer base { html { scroll-behavior: smooth; } ::selection { background: #b6ff33; color: #000; } }
+.hero-grid { background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px); background-size: 48px 48px; }

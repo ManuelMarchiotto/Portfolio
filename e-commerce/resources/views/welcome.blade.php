@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UrbanWear — streetwear essenziale, senza compromessi.">
+    <title>UrbanWear — Streetwear essenziale</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-[#0a0a0a] font-sans text-zinc-100 antialiased">
+    <div class="border-b border-white/10 bg-[#b6ff33] px-4 py-2 text-center text-[10px] font-black tracking-[0.2em] text-black sm:text-xs">SPEDIZIONE GRATUITA IN ITALIA SOPRA I 100 €</div>
+    <header class="relative z-20 border-b border-white/10 bg-[#0a0a0a]/90 backdrop-blur">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8" aria-label="Navigazione principale">
+            <a href="/" class="text-xl font-black tracking-[-0.08em] text-white sm:text-2xl" aria-label="UrbanWear, homepage">URBAN<span class="text-[#b6ff33]">WEAR</span></a>
+            <div class="hidden items-center gap-8 text-xs font-bold uppercase tracking-[0.16em] text-zinc-300 lg:flex"><a class="transition hover:text-[#b6ff33]" href="#drop">Nuovi arrivi</a><a class="transition hover:text-[#b6ff33]" href="{{ route('catalog.index') }}">Shop</a><a class="transition hover:text-[#b6ff33]" href="#story">Manifesto</a></div>
+            <div class="flex items-center gap-4">
+                <button class="hidden text-zinc-300 transition hover:text-[#b6ff33] sm:block" aria-label="Cerca"><svg class="size-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg></button>
+                <a class="relative text-zinc-300 transition hover:text-[#b6ff33]" href="{{ route('cart.index') }}" aria-label="Apri il carrello"><svg class="size-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 12.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="absolute -right-2 -top-2 grid size-4 place-items-center rounded-full bg-[#b6ff33] text-[9px] font-black text-black">{{ collect(session('cart', []))->sum('quantity') }}</span></a>
+                <button id="menu-toggle" class="text-zinc-300 lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri menu"><svg class="size-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden border-t border-white/10 px-5 py-5 lg:hidden"><div class="flex flex-col gap-4 text-xs font-bold uppercase tracking-[0.16em] text-zinc-200"><a href="#drop">Nuovi arrivi</a><a href="{{ route('catalog.index') }}">Shop</a><a href="#story">Manifesto</a></div></div>
+    </header>
+    <main>
+        <section class="hero-grid relative overflow-hidden border-b border-white/10">
+            <div class="mx-auto grid min-h-[680px] max-w-7xl items-end gap-10 px-5 pb-12 pt-16 sm:pb-16 lg:grid-cols-2 lg:px-8 lg:pb-20 lg:pt-24">
+                <div class="relative z-10 max-w-2xl"><p class="mb-6 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.24em] text-[#b6ff33]"><span class="h-px w-8 bg-[#b6ff33]"></span> Drop 01 — Autumn / Winter</p><h1 class="text-6xl font-black leading-[0.82] tracking-[-0.085em] text-white sm:text-7xl lg:text-8xl">OWN<br>YOUR<br><span class="text-[#b6ff33]">BLOCK.</span></h1><p class="mt-8 max-w-md text-sm leading-7 text-zinc-400 sm:text-base">Silhouette oversize, materiali pesanti e dettagli senza rumore. Uniforme per chi sceglie la propria direzione.</p><div class="mt-9 flex flex-wrap gap-3"><a href="{{ route('catalog.index') }}" class="inline-flex items-center gap-3 bg-[#b6ff33] px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:bg-white">Esplora il drop <span aria-hidden="true">→</span></a><a href="#story" class="inline-flex items-center gap-3 border border-white/20 px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white">Il nostro mondo</a></div></div>
+                <div class="relative mx-auto w-full max-w-md self-center lg:max-w-none"><div class="absolute -inset-8 rounded-full bg-[#b6ff33]/15 blur-3xl"></div><div class="relative aspect-[4/5] overflow-hidden border border-white/15 bg-zinc-900"><div class="absolute inset-0 bg-[linear-gradient(135deg,transparent_49.8%,rgba(182,255,51,0.7)_50%,transparent_50.2%)] opacity-20"></div><div class="absolute inset-x-0 bottom-0 h-2/3 bg-[radial-gradient(ellipse_at_bottom,rgba(182,255,51,0.22),transparent_68%)]"></div><div class="absolute left-[19%] top-[12%] h-[75%] w-[62%] rounded-t-[45%] bg-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.13)]"></div><div class="absolute left-[13%] top-[28%] h-[44%] w-[19%] -rotate-12 rounded-full bg-zinc-950"></div><div class="absolute right-[13%] top-[28%] h-[44%] w-[19%] rotate-12 rounded-full bg-zinc-950"></div><div class="absolute left-[27%] top-[35%] w-[46%] border-y border-white/15 py-3 text-center text-[11px] font-black tracking-[0.3em] text-[#b6ff33]">UNIFORM_01</div><div class="absolute bottom-4 left-4 right-4 flex items-end justify-between border-t border-white/20 pt-3 text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-400"><span>Studio 2026</span><span>Milano / IT</span></div></div><span class="absolute -bottom-4 -left-4 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-black">Built for everyday</span></div>
+            </div>
+        </section>
+        <section id="drop" class="border-b border-white/10 bg-[#101010] py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="mb-10 flex items-end justify-between gap-4"><div><p class="text-[10px] font-black uppercase tracking-[0.22em] text-[#b6ff33]">Selezione</p><h2 class="mt-3 text-4xl font-black tracking-[-0.06em] text-white sm:text-5xl">IL DROP DELLA<br>SETTIMANA.</h2></div><a href="{{ route('catalog.index') }}" class="hidden border-b border-[#b6ff33] pb-1 text-xs font-bold uppercase tracking-[0.14em] text-white sm:block">Vedi tutto</a></div>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    @foreach ($featuredProducts as $product)
+                        <article class="group">
+                            <div class="relative aspect-[4/5] overflow-hidden {{ $loop->first ? 'bg-zinc-800' : ($loop->iteration === 2 ? 'bg-stone-800' : 'bg-neutral-700') }}">
+                                <span class="absolute left-4 top-4 text-[10px] font-black tracking-[0.18em] text-zinc-400">0{{ $loop->iteration }}</span>
+                                <div class="absolute inset-0 transition duration-500 group-hover:scale-105 {{ $loop->first ? 'bg-[radial-gradient(ellipse_at_center,rgba(182,255,51,0.3),transparent_60%)]' : '' }}"></div>
+                                <div class="absolute bottom-0 left-1/2 h-[62%] w-[55%] -translate-x-1/2 rounded-t-[45%] bg-zinc-950"></div>
+                                <button class="absolute bottom-4 right-4 grid size-10 place-items-center bg-[#b6ff33] text-lg text-black opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100" aria-label="Aggiungi {{ $product->name }} al carrello">+</button>
+                            </div>
+                            <div class="flex items-start justify-between gap-3 py-4"><div><h3 class="font-bold text-white"><a class="transition hover:text-[#b6ff33]" href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h3><p class="mt-1 text-xs text-zinc-500">{{ $product->color }} / {{ $product->category->name }}</p></div><p class="text-sm font-bold text-[#b6ff33]">{{ number_format($product->price, 0, ',', '.') }} €</p></div>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <section id="story" class="border-b border-white/10 py-20 sm:py-28"><div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:px-8"><p class="text-[10px] font-black uppercase tracking-[0.22em] text-[#b6ff33]">Il manifesto</p><div><h2 class="text-4xl font-black leading-[0.95] tracking-[-0.065em] text-white sm:text-6xl">NON SEGUIAMO<br>LE TENDENZE.<br><span class="text-zinc-600">LE ATTRAVERSIAMO.</span></h2><p class="mt-8 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base">UrbanWear nasce per chi vive la città come uno spazio da riscrivere. Capi essenziali, costruiti per durare oltre una stagione e per prendere la forma di chi li indossa.</p><div class="mt-10 grid grid-cols-3 gap-5 border-t border-white/10 pt-6"><div><p class="text-2xl font-black text-white">100%</p><p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500">Cotone selezionato</p></div><div><p class="text-2xl font-black text-white">24h</p><p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500">Spedizione rapida</p></div><div><p class="text-2xl font-black text-white">01</p><p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500">Drop alla volta</p></div></div></div></div></section>
+        <section id="shop" class="bg-[#b6ff33] px-5 py-16 text-center text-black sm:py-20"><p class="text-[10px] font-black uppercase tracking-[0.24em]">Non perdere il prossimo drop</p><h2 class="mt-4 text-4xl font-black tracking-[-0.07em] sm:text-6xl">ENTRA NELLA LISTA.</h2><form class="mx-auto mt-8 flex max-w-md border-b-2 border-black" action="#" method="post"><label class="sr-only" for="email">La tua email</label><input id="email" class="min-w-0 flex-1 bg-transparent py-3 text-sm placeholder:text-black/60 focus:outline-none" type="email" placeholder="La tua email" required><button class="px-3 text-xs font-black uppercase tracking-[0.14em]" type="submit">Iscriviti →</button></form></section>
+    </main>
+    <footer class="bg-[#0a0a0a] py-10"><div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 text-xs text-zinc-500 sm:flex-row sm:items-end sm:justify-between lg:px-8"><div><p class="text-xl font-black tracking-[-0.08em] text-white">URBAN<span class="text-[#b6ff33]">WEAR</span></p><p class="mt-2">Streetwear essenziale. Milano, Italia.</p></div><div class="flex gap-5 font-bold uppercase tracking-[0.12em]"><a class="hover:text-white" href="#">Instagram</a><a class="hover:text-white" href="#">TikTok</a><a class="hover:text-white" href="#">Contatti</a></div><p>© {{ date('Y') }} UrbanWear</p></div></footer>
+</body>
+</html>
