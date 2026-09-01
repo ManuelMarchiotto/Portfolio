@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class CartController extends Controller
 {
+    public function __construct(protected CartService $cartService) {}
+
     public function index(): View
     {
-        $items = collect(session('cart', []));
+        $items = $this->cartService->getCart();
 
         return view('cart.index', [
             'items' => $items,
-            'total' => $items->sum(fn (array $item) => $item['price'] * $item['quantity']),
+            'total' => $this->cartService->calculateTotal(),
         ]);
     }
 
@@ -35,55 +38,25 @@ class CartController extends Controller
         ]);
 
         $size = $validated['size'] ?? null;
-        $key = "{$product->id}-{$size}";
-        $cart = session('cart', []);
-        $existingQuantity = $cart[$key]['quantity'] ?? 0;
-
-        $cart[$key] = [
-            'product_id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->price,
-            'size' => $size,
-            'quantity' => min($existingQuantity + $validated['quantity'], $product->stock),
-        ];
-
-        session(['cart' => $cart]);
+        $this->cartService->addItem($product, $size);
 
         return back()->with('success', "{$product->name} è stato aggiunto al carrello.");
     }
 
     public function update(Request $request, string $item): RedirectResponse
     {
-        $cart = session('cart', []);
-        abort_unless(isset($cart[$item]), 404);
-
-        $product = Product::findOrFail($cart[$item]['product_id']);
-        $validated = $request->validate([
-            'quantity' => ['required', 'integer', 'min:0', "max:{$product->stock}"],
-        ]);
-
-        if ($validated['quantity'] === 0) {
-            unset($cart[$item]);
-
-            session(['cart' => $cart]);
-
+        $updated = $this->cartService->updateItem($item, (int)$request->input('quantity'));
+        
+        if ($updated === null) {
             return back()->with('success', 'Articolo rimosso dal carrello.');
         }
-
-        $cart[$item]['quantity'] = $validated['quantity'];
-        session(['cart' => $cart]);
 
         return back()->with('success', 'Quantità aggiornata.');
     }
 
     public function destroy(string $item): RedirectResponse
     {
-        $cart = session('cart', []);
-        abort_unless(isset($cart[$item]), 404);
-
-        unset($cart[$item]);
-        session(['cart' => $cart]);
-
+        $this->cartService->removeItem($item);
         return back()->with('success', 'Articolo rimosso dal carrello.');
     }
 }

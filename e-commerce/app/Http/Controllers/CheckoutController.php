@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Product;
+use App\Services\OrderService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class CheckoutController extends Controller
 {
+    public function __construct(protected OrderService $orderService) {}
+
     public function create(Request $request): View|RedirectResponse
     {
-        $items = collect($request->session()->get('cart', []));
+        $items = collect(session('cart', []));
 
         if ($items->isEmpty()) {
             return redirect()->route('cart.index')->with('error', 'Il carrello è vuoto.');
@@ -34,7 +36,7 @@ class CheckoutController extends Controller
             'shipping_address' => ['required', 'string', 'max:255'],
             'shipping_city' => ['required', 'string', 'max:120'],
             'shipping_postal_code' => ['required', 'string', 'max:10'],
-            'shipping_country' => ['required', 'string', 'max:120'],
+            'shipping_country' => ['required', 'string', 'max' => 120],
         ]);
 
         $cart = $request->session()->get('cart', []);
@@ -42,46 +44,14 @@ class CheckoutController extends Controller
             return redirect()->route('cart.index')->with('error', 'Il carrello è vuoto.');
         }
 
-        $order = DB::transaction(function () use ($request, $validated, $cart): Order {
-            $products = Product::whereIn('id', collect($cart)->pluck('product_id'))->lockForUpdate()->get()->keyBy('id');
-            $total = 0;
+        try {
+            $order = $this->orderService->placeOrder($validated, $cart);
+            $request->session()->forget('cart');
 
-            foreach ($cart as $item) {
-                $product = $products->get($item['product_id']);
-                abort_unless($product?->is_active, 422, 'Un prodotto nel carrello non è più disponibile.');
-                abort_if($item['quantity'] > $product->stock, 422, "Stock insufficiente per {$product->name}.");
-                $total += (float) ($product->sale_price ?? $product->price) * $item['quantity'];
-            }
-
-            $order = Order::create([
-                ...$validated,
-                'user_id' => $request->user()?->id,
-                'status' => 'pending',
-                'total' => $total,
-            ]);
-
-            foreach ($cart as $item) {
-                $product = $products->get($item['product_id']);
-                $unitPrice = $product->sale_price ?? $product->price;
-
-                $order->items()->create([
-                    'product_id' => $product->id,
-                    'product_name' => $product->name,
-                    'product_sku' => $product->sku,
-                    'size' => $item['size'] ?? null,
-                    'unit_price' => $unitPrice,
-                    'quantity' => $item['quantity'],
-                ]);
-
-                $product->decrement('stock', $item['quantity']);
-            }
-
-            return $order;
-        });
-
-        $request->session()->forget('cart');
-
-        return redirect()->route('checkout.success', $order)->with('success', 'Ordine ricevuto.');
+            return redirect()->route('checkout.success', $order)->with('success', 'Ordine ricevuto.');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function success(Order $order): View
