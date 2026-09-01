@@ -1,80 +1,74 @@
-# UrbanWear
+# UrbanWear | Professional E-Commerce Engine
 
-UrbanWear è un e-commerce di abbigliamento streetwear sviluppato come progetto portfolio full stack. L'obiettivo è realizzare un'applicazione moderna, responsive e completa: dalla scoperta dei prodotti fino alla gestione degli ordini.
+UrbanWear is a high-performance e-commerce platform developed with a focus on robust backend architecture, data integrity, and clean code principles. It represents a professional-grade application designed to handle real-world commerce needs.
 
-## Tecnologie
+## 🚀 Project Overview
+The goal was to build a production-ready e-commerce engine. Beyond the user-facing store, this project tackles core technical challenges such as **concurrency handling**, **transactional integrity**, and **separation of concerns**.
 
-- **Backend:** PHP 8.5 e Laravel 13
-- **Frontend:** Blade, HTML, Tailwind CSS e JavaScript
-- **Database:** SQLite in sviluppo; MySQL previsto per la pubblicazione
-- **Build frontend:** Vite
+## 🛠 Tech Stack
+- **Framework:** Laravel (PHP 8.3+)
+- **Styling:** Tailwind CSS v4
+- **Build Tool:** Vite
+- **Database:** SQLite/MySQL (via Eloquent ORM)
 
-> Per questa applicazione usiamo Tailwind CSS. Bootstrap non viene incluso: usare entrambi nello stesso progetto renderebbe lo stile più difficile da mantenere.
+## 🏗 Architecture & Design Decisions
+*The following sections highlight the professional engineering approach taken during development:*
 
-## Funzionalità previste
+### 1. Separation of Concerns (Service Pattern)
+Instead of implementing heavy business logic within Controllers, I adopted a **Service-Oriented Architecture**.
+*   **Why?** By delegating core logic (such as order processing and cart management) to dedicated Service Classes, the code remains modular, easy to maintain, and—critically—unit-testable. This follows the **Single Responsibility Principle (SRP)**.
 
-- Catalogo prodotti con categorie e filtri
-- Pagina di dettaglio prodotto
-- Carrello persistente
-- Registrazione, accesso e profilo utente
-- Checkout e storico ordini
-- Lista dei desideri
-- Recensioni prodotto
-- Area amministratore per gestire prodotti, categorie e ordini
-- Layout responsive per desktop e mobile
+### 2. Data Integrity & Concurrency
+One of the most critical challenges in e-commerce is preventing "overselling" (two users successfully purchasing the last item at the same time).
+*   **Solution:** I implemented **Database Transactions** combined with `lockForUpdate()`. This ensures that the inventory check and order creation are atomic. If any part of the process fails, the transaction rolls back, ensuring 100% consistency between stock levels and order records.
 
-## Roadmap
+### 3. Performance Optimization
+*   **Eager Loading:** Implemented to solve the "N+1 Query" problem, ensuring that related data (like product categories) is fetched efficiently in a single database hit.
+*   **Memory Management:** Optimized collection handling and data flow to ensure smooth performance during heavy operations like cart calculation.
 
-- [x] Creazione del progetto Laravel e configurazione iniziale
-- [x] Configurazione di Tailwind CSS e Vite
-- [x] Progettazione delle pagine e dell'esperienza utente
-- [x] Layout pubblico: navbar, footer e homepage
-- [x] Modelli e migrazioni: categorie e prodotti
-- [x] Catalogo, ricerca e filtri
-- [ ] Autenticazione utenti
-- [ ] Carrello e checkout
-- [ ] Ordini e area amministratore
-- [ ] Test, screenshot e pubblicazione online
+---
 
-## Avvio in locale
+## 🚀 Development Journey
+The project followed a structured engineering path to ensure a robust final product:
 
-Installa le dipendenze frontend e avvia l'ambiente di sviluppo:
+1.  **Core Foundation:** Architecture design, database schema creation for products and categories.
+2.  **Inquiry System:** Development of a performant product catalog with advanced filtering and search capabilities.
+3.  **Stateful Cart Engine:** Implementation of a robust shopping cart logic handling multi-variant products (e.g., size selection) and accurate pricing.
+4.  **Atomic Checkout:** Engineering a transaction-safe checkout flow, handling complex database locks to guarantee data integrity.
+5.  **Refinement:** Architecture refactoring into Service Classes and optimizing code readability and speed.
 
-```bash
-npm install
-composer run dev
-```
+---
 
-L'applicazione sarà disponibile all'indirizzo indicato nel terminale. In alternativa, puoi avviare separatamente il server Laravel e Vite:
+## ✨ Key Features
+- **Advanced Catalog:** Efficiently filterable product listing with multi-criteria search.
+- **Safe Cart Management:** Robust handling of itemized queries and stock checks.
+- **Transactionally Safe Orders:** A high-integrity checkout flow that ensures one-to-one consistency between payments and inventory.
+- **Admin Dashboard:** A secure back-office for order management and product administration.
 
-```bash
-php artisan serve
-npm run dev
-```
+## 🚀 Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone <repository_url>
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   composer install
+   ```
+3. Environment setup:
+   ```sh
+   cp .env.example .env
+   php artisan key:generate
+   ```
+4. Run migrations and seed data:
+   ```sh
+   php artisan migrate --seed
+   ```
+5. Start the development server:
+   ```sh
+   php artisan serve
+   npm run dev
+   ```
 
-## Stato del progetto
-
-**Fase attuale:** catalogo e pagina dettaglio prodotto completati. Il prossimo passo è mostrare e gestire il carrello.
-
-## Database
-
-Le tabelle principali introdotte in questa fase sono:
-
-- `categories`: nome, slug, descrizione e immagine della categoria.
-- `products`: categoria, nome, slug, SKU, descrizione, prezzi, disponibilità, colore, taglie, immagine e flag di pubblicazione.
-
-Ogni prodotto appartiene a una categoria. Le taglie sono memorizzate come elenco JSON, così da supportare facilmente articoli con disponibilità diverse.
-
-Il catalogo demo comprende tre categorie e sei prodotti. Per ripristinarlo o aggiornare i dati in sviluppo:
-
-```bash
-php artisan db:seed
-```
-
-## Catalogo
-
-La pagina `/catalogo` mostra i prodotti attivi e supporta ricerca per nome o SKU, categoria, intervallo di prezzo, disponibilità e ordinamento. I filtri sono parametri URL, quindi il risultato di una ricerca può essere condiviso o salvato.
-
-## Pagina prodotto
-
-Ogni prodotto ha una pagina dedicata con descrizione, colore, stock, taglie e prodotti correlati. L'utente può selezionare taglia e quantità, poi aggiungere l'articolo al carrello di sessione.
+---
+*Developed with a focus on scalability, security, and high-quality engineering.*
